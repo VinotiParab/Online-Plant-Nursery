@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script async src="https://pay.google.com/gp/p/js/pay.js" onload="onGooglePayLoaded()">
+            function onGooglePayLoaded() {
+            const googlePayClient = new google.payments.api.PaymentsClient({
+            environment: 'TEST'
+            });
+            }
+            {
+            apiVersion: number,
+                    apiVersionMinor: number,
+                    allowedPaymentMethods: Array,
+            };
+            
+            
+            
+            {
+            type: 'CARD',
+                    parameters: {
+                    allowedCardNetworks: Array.<string>,
+            allowedAuthMethods: Array.<string>
+            }
+            };
+            const baseCardPaymentMethod = {
+                            type: 'CARD',
+                            parameters: {
+                            allowedCardNetworks: ['VISA', 'MASTERCARD'],
+                                    allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS']
+            }
+            };
+            
+            
+            
+            const baseCardPaymentMethod = {
+                                    type: 'CARD',
+                                    parameters: {
+                                    allowedCardNetworks: ['VISA', 'MASTERCARD'],
+                                            allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS']
+            }
+            };
+            
+            const googlePayBaseConfiguration = {
+                                            apiVersion: 2,
+                                            apiVersionMinor: 0,
+                                            allowedPaymentMethods: [baseCardPaymentMethod]
+                                            };
+                                            
+
+            
+            googlePayClient.isReadyToPay(googlePayBaseConfiguration)
+                                            .then(function(response) {
+                                            if (response.result) {
+                                    // Add Google Pay button – createAndAddButton()
+                                            } else {
+                                            // Unable to pay using Google Pay
+            }
+            }).catch(function(err) {
+                                            console.error("Error determining readiness to use Google Pay: ", err);
+            });
+
+            function createAndAddButton() {
+
+                                            const button = googlePayClient.createButton({
+
+                                            // currently defaults to black if default or omitted
+                                            buttonColor: 'default',
+                                                    // defaults to long if omitted
+                                                    buttonType: 'long',
+                                                    onClick: onGooglePaymentsButtonClicked
+            });
+                                            
+            document.getElementById('buy-now').appendChild(button);
+                                                    }
+                                                    
+                                                    function onGooglePaymentsButtonClicked() {
+                                                    // TODO: Perform transaction
+                                            }
+                                            
+                                                    
+                                                    
+                                                    const tokenizationSpecification = {
+                                                    type: 'PAYMENT_GATEWAY',
+                                                    parameters: {
+                                                    gateway: 'example',
+                                                            gatewayMerchantId: 'gatewayMerchantId'
+            }
+                                                    };
+                                                    
+                                                    
+                                                    const cardPaymentMethod = {
+                                                            type: 'CARD',
+                                                            tokenizationSpecification: tokenizationSpecification,
+                                                            parameters: {
+                                                            allowedCardNetworks: ['VISA', 'MASTERCARD'],
+                                                                    allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+                                                                    billingAddressRequired: true,
+                                                                    billingAddressParameters: {
+                                                                    format: 'FULL',
+                                                                            phoneNumberRequired: true
+            }
+            }
+                                                                    };
+                                                                    
+                                                                            
+                                                                            const transactionInfo = {
+                                                                            totalPriceStatus: 'FINAL',
+                                                                            totalPrice: '2',
+                                                                            currencyCode: 'INR'
+                                                                            };
+                                                                            
+                                                                            
+                                                                            const merchantInfo = {
+                                                                            merchantId: '01234567890123456789',
+                                                                            merchantName: 'Example Merchant Name'
+                                                                            };
+                                                                            
+                                                                            
+                                                                            const paymentDataRequest = Object.assign({}, googlePayBaseConfiguration, {
+                                                                            allowedPaymentMethods: [cardPaymentMethod],
+                                                                            transactionInfo: transactionInfo,
+                                                                            merchantInfo: merchantInfo
+                                                                            });
+                                                                            
+                                                                            
+                                                                            googlePayClient
+            .loadPaymentData(paymentDataRequest)
+            .then(function(paymentData) {
+                                                                            // Process result – processPaymentData(paymentData);
+            }).catch(function(err) {
+                                                                            // Log error: { statusCode: CANCELED || DEVELOPER_ERROR }
+            });
+
+
+            {
+                                                                            "apiVersionMinor": 0,
+                                                                            "apiVersion": 2,
+                                                                            "paymentMethodData": {
+                                                                            "description": "Visa •••• 1234",
+                                                                                    "tokenizationData": {
+                                                                                    "type": "PAYMENT_GATEWAY",
+                                                                                            "token": "examplePaymentMethodToken"
+            },
+            "type": "CARD",
+            "info": {
+                                                                                            "cardNetwork": "VISA",
+                                                                                            "cardDetails": "1234",
+                                                                                            "billingAddress": {
+                                                                                            "phoneNumber": ...,
+                                                                                                    ...
+            }
+            }
+            }
+                                                                                                    }
+                                                                                            
+                                                                                            
+                                                                                            function performPayment(paymentData) {
+                                                                                                    const paymentMethodToken = paymentData.paymentMethodData.tokenizationData.token;
+                                                                                            // Sample TODO: Use this token to perform a payment through your payment gateway
+                                                                                            }
+                                                                                                    
+                                                                                            
+                                                                                            googlePayClient.isReadyToPay(googlePayBaseConfiguration)
+            .then(function(response) {
+                                                                                                    if (response.result) {
+                                                                                            createAndAddButton();
+                                                                                            googlePayClient.prefetchPaymentData(paymentDataRequest);
+                                                                                                    }
+                                                                                            });
+                                                                                            
+                                                                                            
+                                                                                                    
+                                                                                            </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+<script>
+      function disableClick(){
+        document.onclick=function(event){
+          if (event.button===2) {
+            alert('Right Click Message');
+            return false;
+          }
+        };
+      }
+      history.pushState(null, null, document.title);
+      window.addEventListener('popstate', function () {
+          history.pushState(null, null, document.title);
+      });
+    </script>
+<body onLoad="disableClick()" >
