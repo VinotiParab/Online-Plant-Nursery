@@ -4,7 +4,7 @@ The main aim of "PLANT NURSERY" is to improve the services of Customers.  It mai
 The primary features of the project entitled "PLANT NURSERY" are high accuracy, design flexibility and easy availability. And also it uses database tables Representing entities and relationships between entities. 
 
 
-# Proposed System 
+## Proposed System 
 * The Project entitled "PLANT NURSERY" is a web-based website (Application Software).
 * The main aim of "PLANT NURSERY " is to improve the services of Customers.
 * In the proposed system customer need not go to the shop for buying the plant or others related products.
@@ -13,7 +13,7 @@ The primary features of the project entitled "PLANT NURSERY" are high accuracy, 
 * The system also recommends a home delivery system for the purchased products. 
 
 
-# Stakeholders 
+## Stakeholders 
 There are different types of stakeholders and each type should be handled differently:
 * Admin: A person who manages the website admin and have a control of registration of customers and adding product. Admin is responsible for deploying and managing the application. Admin makes decision about banning customers or products with respect to their action.
 * Employee: Employee create account or login into their account and manage the not only products but also the orders in absence of admin. 
